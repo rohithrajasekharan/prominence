@@ -1,0 +1,19 @@
+{
+  "name": "@rohithrajasekharan/prominence",
+  "version": "1.0.0",
+  "description": "Web application for prominence",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rohithrajasekharan/prominence.git"
+  },
+  "author": "Rohith Rajasekharan",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rohithrajasekharan/prominence/issues"
+  },
+  "homepage": "https://github.com/rohithrajasekharan/prominence#readme"
+}
