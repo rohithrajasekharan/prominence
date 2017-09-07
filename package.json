@@ -15,5 +15,22 @@
   "bugs": {
     "url": "https://github.com/rohithrajasekharan/prominence/issues"
   },
-  "homepage": "https://github.com/rohithrajasekharan/prominence#readme"
+  "homepage": "https://github.com/rohithrajasekharan/prominence#readme",
+  "dependencies": {
+    "bcryptjs": "*",
+    "body-parser": "*",
+    "connect-flash": "*",
+    "cookie-parser": "*",
+    "express": "*",
+    "express-handlebars": "^3.0.0",
+    "express-messages": "*",
+    "express-session": "*",
+    "express-validator": "*",
+    "flash": "^1.1.0",
+    "mongodb": "*",
+    "mongoose": "*",
+    "passport": "*",
+    "passport-http": "*",
+    "passport-local": "*"
+  }
 }
