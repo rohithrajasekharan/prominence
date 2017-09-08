@@ -2,14 +2,19 @@ var express=require("express");
 var path=require("path");
 var cookieParse=require("cookie-parser");
 var bodyParser=require("body-parser");
+var validator=require('express-validator');
 var exphbs=require('express-handlebars');
-var flash=require("flash");
+var flash=require("connect-flash");
 var session=require("express-session");
 var passport=require("passport");
 var localStrategy=require("passport-local").Strategy;
 var mongo=require("mongodb");
 var mongoose=require("mongoose");
-mongoose.connect("mongodb://localhost/prominence");
+mongoose.Promise = global.Promise;
+mongoose.connect("mongodb://localhost/prominence", {
+  useMongoClient: true,
+  /* other options */
+});
 var db = mongoose.connection;
 var routes=require("./routes/index");
 var users=require("./routes/users");
@@ -24,6 +29,22 @@ app.use(session({
 	secret:"secret",
 	saveUninitialized: true,
 	resave: true
+}));
+app.use(validator({
+  errorFormatter: function(param,msg,value){
+    var namespace = param.split('.'),
+    root    = namespace.shift(),
+    formParam = root;
+
+    while(namespace.length){
+      formParam += '[' + namespace.shift() + ']';
+    }
+    return {
+      param : formParam,
+      msg : msg,
+      value : value
+    };
+  }
 }));
 app.use(passport.initialize());
 app.use(passport.session());

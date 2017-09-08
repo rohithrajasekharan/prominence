@@ -1,0 +1,76 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,700);
+body {
+  font-family: 'Roboto', sans-serif;
+}
+.site-header {
+  display: flex;
+  align-items: center;
+  background: #0d1313;
+  color: white;
+}
+@media (max-width: 600px) {
+  .site-header {
+    flex-wrap: wrap;
+  }
+  .site-header .site-nav {
+    background: #222;
+    order: 2;
+    flex-basis: 100%;
+  }
+  .site-header .site-nav a {
+    font-size: 1rem;
+  }
+  .site-header .account-actions {
+    margin-left: auto;
+  }
+}
+.logo {
+  color: white;
+  text-transform: uppercase;
+  text-decoration: none;
+  letter-spacing: 2px;
+  padding: 10px 20px;
+}
+.site-nav {
+  text-align: center;
+  flex: 1;
+}
+.site-nav > ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: inline-flex;
+}
+.site-nav .active a {
+  background: #16473a;
+  color: #5dccaf;
+}
+.site-nav a {
+  color: #e2e6e7;
+  text-decoration: none;
+  text-transform: uppercase;
+  padding: 20px;
+  display: inline-block;
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+.account-actions {
+  display: flex;
+  align-items: center;
+  padding-right: 10px;
+}
+.account-dropdown {
+  margin-right: 10px;
+}
+.account-dropdown > ul {
+  display: none;
+}
+.sign-out-link {
+  color: #e2e6e7;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-size: 0.8rem;
+}
+.form-control{
+  max-width: 400px
+}
