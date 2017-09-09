@@ -13,13 +13,13 @@
       <a href="/" class="logo">Logo</a>
       {{#if user}}
       <div class="account-actions">
-        <a href="/users/logout" class="sign-out-link">Sign Out</a>
         <div class="account-dropdown">
-          ⚙
+          {{user.firstName}} {{user.lastName}}
           <ul>
             <li>Your Account</li>
           </ul>
         </div>
+          <a href="/users/logout" class="sign-out-link">Sign Out</a>
       </div>
       {{else}}
       <nav class="site-nav">

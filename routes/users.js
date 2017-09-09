@@ -18,7 +18,9 @@ function ensureAuthenticated(req, res, next) {
   if (req.isAuthenticated()) {
     req.flash('error_msg','You are logged in');
     res.redirect('/');
-  }else{
+  }
+  else
+  {
 return next();
   }
 }
@@ -33,18 +35,18 @@ router.get('/login',ensureAuthenticated, function(req, res){
 
 // Register User
 router.post('/register', function(req, res){
-	var name = req.body.name;
+	var firstName = req.body.firstName;
 	var email = req.body.email;
-	var username = req.body.username;
+	var lastName = req.body.lastName;
 	var password = req.body.password;
 	var password2 = req.body.password2;
 
 	// Validation
 
-	req.checkBody('name', 'Name is required').notEmpty();
+	req.checkBody('lastName', 'First Name is required').notEmpty();
 	req.checkBody('email', 'Email is required').notEmpty();
 	req.checkBody('email', 'Email is not valid').isEmail();
-	req.checkBody('username', 'Username is required').notEmpty();
+	req.checkBody('lastName', 'Last Name is required').notEmpty();
 	req.checkBody('password', 'Password is required').notEmpty();
 	req.checkBody('password2', 'Passwords do not match').equals(req.body.password);
 
@@ -53,28 +55,30 @@ router.post('/register', function(req, res){
 	if(errors){
 		res.render('register',{
 			errors:errors
+
 		});
 	} else {
 		var newUser = new User({
-			name: name,
+			firstName: firstName,
 			email:email,
-			username: username,
+			lastName: lastName,
 			password: password
 		});
 
-		User.createUser(newUser, function(err, user){
-			if(err) throw err;
-			console.log(user);
-		});
-
-		req.flash('success_msg', 'You are registered and can now login');
-
-		res.redirect('/users/login');
+    User.createUser(newUser, function(err, user){
+    if (err) {
+      req.flash('error','Email already in use.');
+      res.redirect('/users/register')
+    }else {
+      req.flash('success_msg', 'You are registered and can now login');
+  		res.redirect('/users/login');
+    }
+    });
 	}
 });
 passport.use(new LocalStrategy(
-  function(username, password, done) {
-User.getUserByUsername(username, function(err, user){
+  function(email, password, done) {
+User.getUserByMail(email, function(err, user){
   if(err) throw err;
   if(!user){
     return done(null, false,  {message:'unknown User'});
@@ -225,4 +229,5 @@ router.post('/reset/:token', function(req, res) {
     res.redirect('/');
   });
 });
+
 module.exports=router;
