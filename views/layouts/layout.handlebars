@@ -11,13 +11,7 @@
   <body>
     <header class="site-header">
       <a href="/" class="logo">Logo</a>
-      <nav class="site-nav">
-        <ul>
-          <li><a href="/">Dashboard</a></li>
-          <li><a href="/users/login">Login</a></li>
-          <li><a href="/users/register">Sign up</a></li>
-        </ul>
-      </nav>
+      {{#if user}}
       <div class="account-actions">
         <a href="/users/logout" class="sign-out-link">Sign Out</a>
         <div class="account-dropdown">
@@ -27,6 +21,15 @@
           </ul>
         </div>
       </div>
+      {{else}}
+      <nav class="site-nav">
+        <ul>
+          <li><a href="/">Dashboard</a></li>
+          <li><a href="/users/login">Login</a></li>
+          <li><a href="/users/register">Sign up</a></li>
+        </ul>
+      </nav>
+    {{/if}}
     </header></br>
     <div class="container">
       <div class="row">

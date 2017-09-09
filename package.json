@@ -17,10 +17,13 @@
   },
   "homepage": "https://github.com/rohithrajasekharan/prominence#readme",
   "dependencies": {
+    "@sendgrid/mail": "^6.1.2",
+    "async": "^2.5.0",
     "bcryptjs": "*",
     "body-parser": "*",
     "connect-flash": "*",
     "cookie-parser": "*",
+    "dotenv": "^4.0.0",
     "express": "*",
     "express-handlebars": "^3.0.0",
     "express-messages": "*",
@@ -30,6 +33,7 @@
     "mongodb": "*",
     "mongoose": "*",
     "node-sass": "^4.5.3",
+    "nodemailer": "^4.1.0",
     "passport": "*",
     "passport-http": "*",
     "passport-local": "*"
