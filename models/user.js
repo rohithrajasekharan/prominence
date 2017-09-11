@@ -36,6 +36,7 @@ module.exports.createUser = function(newUser, callback){
 	    });
 	});
 }
+
 module.exports.getUserByMail = function(email, callback) {
   var query = {email: email};
   User.findOne(query, callback);

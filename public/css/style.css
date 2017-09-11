@@ -32,6 +32,7 @@ body {
   padding: 10px 20px;
 }
 .site-nav {
+  margin: auto;
   text-align: center;
   flex: 1;
 }
@@ -49,10 +50,15 @@ body {
   color: #e2e6e7;
   text-decoration: none;
   text-transform: uppercase;
-  padding: 20px;
+  padding:20px;
   display: inline-block;
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   font-weight: bold;
+}
+@media (max-width: 600px) {
+  .site-nav a {
+  padding: 10px;
+}
 }
 .account-actions {
   display: flex;

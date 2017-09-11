@@ -12,6 +12,12 @@
     <header class="site-header">
       <a href="/" class="logo">Logo</a>
       {{#if user}}
+      <nav class="site-nav">
+          <ul>
+            <li><a href="/">Dashboard</a></li>
+            <li><a href="/users/events">Events</a></li>
+          </ul>
+      </nav>
       <div class="account-actions">
         <div class="account-dropdown">
           {{user.firstName}} {{user.lastName}}
@@ -23,11 +29,12 @@
       </div>
       {{else}}
       <nav class="site-nav">
-        <ul>
-          <li><a href="/">Dashboard</a></li>
-          <li><a href="/users/login">Login</a></li>
-          <li><a href="/users/register">Sign up</a></li>
-        </ul>
+          <ul>
+            <li><a href="/">Dashboard</a></li>
+            <li><a href="/users/events">Events</a></li>
+            <li><a href="/users/login">Login</a></li>
+            <li><a href="/users/register">Sign up</a></li>
+          </ul>
       </nav>
     {{/if}}
     </header></br>

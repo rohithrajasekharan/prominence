@@ -9,6 +9,7 @@ var nodemailer=require('nodemailer');
 var dotenv = require('dotenv');
 dotenv.load();
 var nodemailer = require('nodemailer');
+var bcrypt = require('bcryptjs');
 
 var sendgrid_username   = process.env.SENDGRID_USERNAME;
 var sendgrid_password   = process.env.SENDGRID_PASSWORD;
@@ -29,6 +30,9 @@ return next();
 router.get('/register',ensureAuthenticated, function(req, res){
 	res.render('register');
 });
+router.get('/events', function(req, res){
+	res.render('events');
+});
 router.get('/login',ensureAuthenticated, function(req, res){
 	res.render('login');
 });
@@ -44,10 +48,9 @@ router.post('/register', function(req, res){
 	// Validation
 
 	req.checkBody('lastName', 'First Name is required').notEmpty();
-	req.checkBody('email', 'Email is required').notEmpty();
 	req.checkBody('email', 'Email is not valid').isEmail();
 	req.checkBody('lastName', 'Last Name is required').notEmpty();
-	req.checkBody('password', 'Password is required').notEmpty();
+  req.checkBody('password', 'Password should be minimum 6 characters long').isLength({ min: 5 })
 	req.checkBody('password2', 'Passwords do not match').equals(req.body.password);
 
 	var errors = req.validationErrors();
@@ -191,15 +194,21 @@ router.post('/reset/:token', function(req, res) {
           return res.redirect('/users/forgot');
         }
 
-        user.password = req.body.password;
+
+
         user.resetPasswordToken = undefined;
         user.resetPasswordExpires = undefined;
-
-        user.save(function(err) {
-          req.logIn(user, function(err) {
-            done(err, user);
+        bcrypt.genSalt(10, function(err, salt) {
+        bcrypt.hash(req.body.password, salt, function(err, hash) {
+          req.body.password = hash;  user.password = req.body.password;
+          user.password = req.body.password;
+          user.save(function(err) {
+            req.logIn(user, function(err) {
+              done(err, user);
+            });
           });
-        });
+        })
+          })
       });
     },
     function(user, done){
