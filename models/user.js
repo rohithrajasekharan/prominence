@@ -17,6 +17,7 @@ var UserSchema = mongoose.Schema({
 	firstName: {
 		type: String
 	},
+	events:[],
 	resetPasswordToken: {
 		type :String
 	},

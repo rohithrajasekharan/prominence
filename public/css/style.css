@@ -1,20 +1,41 @@
-@import url(https://fonts.googleapis.com/css?family=Roboto:400,700);
-body {
-  font-family: 'Roboto', sans-serif;
+
+body, input {
+  font-family: "Merriweather", Georgia, serif;
+  font-weight: 300;
+  font-size: 1rem;
+  line-height: 2.375;
+}
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Source Sans Pro", Helvetica, sans-serif;
+  font-weight: 900;
+  line-height: 1.5;
+  letter-spacing: 0.075em;
+  text-transform: uppercase;
+  margin: 0 0 1rem 0;
 }
 .site-header {
   display: flex;
   align-items: center;
-  background: #0d1313;
+  background: #0265C9;
   color: white;
+}
+.btn{
+  padding: 5px;
+  max-height: 40px;
+  min-width: 100px;
+}
+.btn{
+  padding: 5px 10px 5px 10px;
+  max-height: 40px;
 }
 @media (max-width: 600px) {
   .site-header {
     flex-wrap: wrap;
   }
   .site-header .site-nav {
-    background: #222;
+    background: white;
     order: 2;
+    margin-top: 5px;
     flex-basis: 100%;
   }
   .site-header .site-nav a {
@@ -29,7 +50,7 @@ body {
   text-transform: uppercase;
   text-decoration: none;
   letter-spacing: 2px;
-  padding: 20px 20px;
+  padding: 5px 15px;
 }
 .site-nav {
   margin: auto;
@@ -58,6 +79,8 @@ body {
 @media (max-width: 600px) {
   .site-nav a {
   padding: 10px;
+  background-color:white;
+color: #0265C9;
 }
 }
 .account-actions {
@@ -80,4 +103,26 @@ body {
 }
 .form-control{
   max-width: 400px
+}
+.card{
+  margin: 20px;
+}
+
+@media (max-width: 600px) {
+  iframe{
+    width: 100%;
+    height: 200px;
+  }
+}
+iframe{
+  float: right;
+}
+.row-col{
+  padding-left: auto;
+  padding-left: auto;
+  margin: auto;
+}
+#logo{
+  height: 2.3em;
+  width: 2.3em;
 }

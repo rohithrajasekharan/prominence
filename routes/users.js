@@ -10,7 +10,6 @@ var dotenv = require('dotenv');
 dotenv.load();
 var nodemailer = require('nodemailer');
 var bcrypt = require('bcryptjs');
-
 var sendgrid_username   = process.env.SENDGRID_USERNAME;
 var sendgrid_password   = process.env.SENDGRID_PASSWORD;
 var to                  = process.env.TO;
@@ -69,6 +68,7 @@ router.post('/register', function(req, res){
 		});
 
     User.createUser(newUser, function(err, user){
+
     if (err) {
       req.flash('error','Email already in use.');
       res.redirect('/users/register')
@@ -109,6 +109,7 @@ passport.deserializeUser(function(id, done) {
 router.post('/login',
   passport.authenticate('local', {successRedirect:'/', failureRedirect:'/users/login',failureFlash:true}),
   function(req, res) {
+
     });
       router.get('/logout', function(req, res){
     	req.logout();
