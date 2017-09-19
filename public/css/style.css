@@ -4,6 +4,7 @@ body, input {
   font-weight: 300;
   font-size: 1rem;
   line-height: 2.375;
+  overflow-x: hidden;
 }
 h1, h2, h3, h4, h5, h6 {
   font-family: "Source Sans Pro", Helvetica, sans-serif;
@@ -18,11 +19,18 @@ h1, h2, h3, h4, h5, h6 {
   align-items: center;
   background: #0265C9;
   color: white;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
+.sec{
+  margin-top: 70px;
+  margin-bottom: 40px;
+}
+
 .btn{
   padding: 5px;
   max-height: 40px;
   min-width: 100px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
 .btn{
   padding: 5px 10px 5px 10px;
@@ -43,6 +51,10 @@ h1, h2, h3, h4, h5, h6 {
   }
   .site-header .account-actions {
     margin-left: auto;
+  }
+  .sec{
+    margin-top: 20px;
+    margin-bottom: 20px
   }
 }
 .logo {
@@ -90,7 +102,7 @@ color: #0265C9;
   margin-left: auto;
 }
 .account-dropdown {
-  margin-right: 10px;
+  margin-right: 20px;
 }
 .account-dropdown > ul {
   display: none;
@@ -104,10 +116,28 @@ color: #0265C9;
 .form-control{
   max-width: 400px
 }
-.card{
+.card1{
+  padding: 15px;
   margin: 20px;
+ box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+ transition: all 0.3s cubic-bezier(.25,.8,.25,1);
 }
-
+.card1:hover{
+   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+   cursor: pointer;
+}
+.card-img-top{
+  max-height: 250px;
+  background-color: white;
+  width:100%;
+  height: 67px;
+}
+.card-title{
+  font-size: 16px;
+}
+.card-text{
+  font-size: 12px !important;
+}
 @media (max-width: 600px) {
   iframe{
     width: 100%;
@@ -125,4 +155,148 @@ iframe{
 #logo{
   height: 2.3em;
   width: 2.3em;
+}
+footer{
+  max-height: 80em;
+}
+.footer-distributed{
+	background-color: #292c2f;
+	box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+	box-sizing: border-box;
+	width: 100%;
+	text-align: left;
+	font: bold 16px sans-serif;
+
+	padding: 55px 50px;
+	margin-top: 80px;
+}
+
+.footer-distributed .footer-left,
+.footer-distributed .footer-center,
+.footer-distributed .footer-right{
+	display: inline-block;
+	vertical-align: top;
+}
+
+/* Footer left */
+
+.footer-distributed .footer-left{
+	width: 30%;
+}
+
+/* The company logo */
+
+.footer-distributed h3{
+	color:  #ffffff;
+	font: normal 25px 'Cookie', cursive;
+	margin-left:-20px;
+}
+
+.footer-distributed h3 span{
+	color:  #5383d3;
+}
+
+.footer-distributed .footer-company-name{
+	color:  #8f9296;
+	font-size: 14px;
+	font-weight: normal;
+	margin: 0;
+}
+
+/* Footer Center */
+
+.footer-distributed .footer-center{
+	width: 35%;
+}
+
+.footer-distributed .footer-center i{
+	background-color:  #33383b;
+	color: #ffffff;
+	font-size: 25px;
+	width: 38px;
+	height: 38px;
+	border-radius: 50%;
+	text-align: center;
+	line-height: 42px;
+	margin: 10px 15px;
+	vertical-align: middle;
+}
+
+.footer-distributed .footer-center i.fa-envelope{
+	font-size: 17px;
+	line-height: 38px;
+}
+
+.footer-distributed .footer-center p{
+	display: inline-block;
+	color: #ffffff;
+	vertical-align: middle;
+	margin:0;
+}
+
+.footer-distributed .footer-center p span{
+	display:block;
+	font-weight: normal;
+	font-size:14px;
+	line-height:2;
+}
+
+.footer-distributed .footer-center p a{
+	color:  #5383d3;
+	text-decoration: none;;
+}
+
+
+/* Footer Right */
+
+.footer-distributed .footer-right{
+	width: 20%;
+}
+
+
+.footer-distributed .footer-icons{
+	margin-top: 25px;
+}
+
+.footer-distributed .footer-icons a{
+	display: inline-block;
+	width: 35px;
+	height: 35px;
+	cursor: pointer;
+	background-color:  #33383b;
+	border-radius: 2px;
+
+	font-size: 20px;
+	color: #ffffff;
+	text-align: center;
+	line-height: 35px;
+
+	margin-right: 3px;
+	margin-bottom: 5px;
+}
+
+/* If you don't want the footer to be responsive, remove these media queries */
+
+@media (max-width: 880px) {
+
+	.footer-distributed{
+		font: bold 14px sans-serif;
+	}
+
+	.footer-distributed .footer-left,
+	.footer-distributed .footer-center,
+	.footer-distributed .footer-right{
+    width: 180px;
+		display: block;
+		margin-bottom: 40px;
+		text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+
+	}
+
+	.footer-distributed .footer-center i{
+		margin-left: 0;
+	}
+
 }

@@ -8,6 +8,8 @@
 <link href='https://fonts.googleapis.com/css?family=Titillium+Web' rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Merriweather' rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
   <script
   src="https://code.jquery.com/jquery-3.2.1.js"
   integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
@@ -48,9 +50,9 @@
       </nav>
     {{/if}}
     </header></br>
-    <div class="container">
       <div class="row">
      <div class="col-lg-12">
+         <div class="container">
        {{#if success_msg}}
          <div class="alert alert-success">{{success_msg}}</div>
        {{/if}}
@@ -62,7 +64,9 @@
        {{#if error}}
          <div class="alert alert-danger">{{error}}</div>
        {{/if}}
+     </div>
       {{{body}}}
-    </div>
+    </div></div>
+    
   </body>
 </html>
