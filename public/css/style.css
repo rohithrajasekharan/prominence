@@ -1,10 +1,13 @@
-
+@media only screen and (max-width: 992px){
+  {overflow-x:hidden;}
+}
 body, input {
   font-family: "Merriweather", Georgia, serif;
   font-weight: 300;
   font-size: 1rem;
   line-height: 2.375;
-  overflow-x: hidden;
+  overflow-x: hidden !important;
+  width: 100%;
 }
 h1, h2, h3, h4, h5, h6 {
   font-family: "Source Sans Pro", Helvetica, sans-serif;

@@ -43,7 +43,7 @@ p {
 }
 
 .content {
-  padding: 50px 2% 250px;
+  padding-top: 50px ;
 }
 
 .hero {
@@ -55,12 +55,11 @@ p {
   text-align: center;
   color: #fff;
   padding-top: 130px;
-  min-height: 500px;
+  min-height: 450px;
+  margin-right: -25px;
   letter-spacing: 2px;
   font-family: "Montserrat", sans-serif;
   margin-top: -37px;
-  margin-left: 0px;
-  margin-right: 0px;
 }
 .hero a{
   margin-left: 10px;
