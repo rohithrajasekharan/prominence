@@ -239,5 +239,32 @@ router.post('/reset/:token', function(req, res) {
     res.redirect('/');
   });
 });
+router.get('/machine-learning',ensureAuthenticated, function(req, res){
+	res.render('machine-learning');
+});
+router.get('/talk-session',ensureAuthenticated, function(req, res){
+	res.render('sv');
+});
+router.get('/wearables',ensureAuthenticated, function(req, res){
+	res.render('wearables');
+});
+router.get('/mems',ensureAuthenticated, function(req, res){
+	res.render('mems');
+});
+router.get('/lan-gaming',ensureAuthenticated, function(req, res){
+	res.render('lan-gaming');
+});
+router.get('/line-follower',ensureAuthenticated, function(req, res){
+	res.render('line-follower');
+});
+router.get('/quiz',ensureAuthenticated, function(req, res){
+	res.render('quiz');
+});
+router.get('/paper-presentation',ensureAuthenticated, function(req, res){
+	res.render('paper-presentation');
+});
+router.get('/crime-scene',ensureAuthenticated, function(req, res){
+	res.render('crime-scene');
+});
 
 module.exports=router;

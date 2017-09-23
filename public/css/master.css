@@ -3,7 +3,16 @@
   margin-bottom: 100px;
 }
 }
-
+#event{
+  margin-left: auto;
+  margin-right: auto;
+  padding: 20px;
+}
+.card{
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-bottom: 20px;
+}
 nav ul {
   overflow: hidden;
   text-align: right;
@@ -66,34 +75,6 @@ p {
   margin-right: 10px;
 }
 
-@-webkit-keyframes scroll {
-  0% {
-    opacity: 1;
-    -webkit-transform: translateY(0);
-    transform: translateY(0);
-  }
-
-  100% {
-    opacity: 0;
-    -webkit-transform: translateY(20px);
-    transform: translateY(20px);
-  }
-}
-@keyframes scroll {
-  0% {
-    opacity: 1;
-    -webkit-transform: translateY(0);
-    -ms-transform: translateY(0);
-    transform: translateY(0);
-  }
-
-  100% {
-    opacity: 0;
-    -webkit-transform: translateY(20px);
-    -ms-transform: translateY(20px);
-    transform: translateY(20px);
-  }
-}
 
 @font-face {
     font-family: 'Sketch Block';
