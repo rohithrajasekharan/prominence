@@ -1,4 +1,4 @@
-@media (min-width: 600px) {
+  @media (min-width: 600px) {
   .jumbotron{
   margin-bottom: 100px;
 }
@@ -54,22 +54,17 @@ p {
 .content {
   padding-top: 50px ;
 }
-
-.hero {
-  position: relative;
-  background: url(/images/one.jpg) no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  background-size: cover;
-  text-align: center;
-  color: #fff;
-  padding-top: 130px;
-  min-height: 450px;
-  margin-right: -25px;
-  letter-spacing: 2px;
-  font-family: "Montserrat", sans-serif;
-  margin-top: -37px;
+@media only screen and (min-width: 766px) {
+  .hero {
+    position: relative;
+    text-align: center;
+    color: #fff;
+    margin-top: -10em;
+    margin-bottom: 5em;
+    font-family: "Montserrat", sans-serif;
+  }
 }
+
 .hero a{
   margin-left: 10px;
   margin-right: 10px;
@@ -120,3 +115,56 @@ blockquote::first-letter{
 		blockquote strong:first-child {
 			margin-left: 8px;
 		}
+    @media only screen and (min-width: 766px) {
+      #sv-text{
+    margin-left: 120px;
+    }
+    }
+    #sv-text{
+    font-size: 1.1em;
+    }
+.btn{
+  max-width: 150px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 20px;
+}
+.btn-padding{
+margin-left: 20px;
+margin-right: 20px;
+}
+#box{
+    background:none;
+      width: auto;
+      max-width: 400px;
+      min-width: 250px;
+      height: auto;
+      border: solid black 1px;
+      border-radius: 5px;
+      margin: 2% auto;
+      padding: 2%;
+  }
+i{
+  margin-left: 5px;
+}
+#paper-img{
+  max-height: 300px;
+}
+@media only screen and (max-width: 766px) {
+  #paper-img{
+    max-height: 125px;
+  }
+  #crime{
+    height: 400px;
+    width: auto;
+  }
+  #crime_text{
+      margin-left:20px;
+      margin-right:20px;
+  }
+}
+@media (min-width: 800px) {
+  .col-md-3{
+    margin-left: -230px;
+
+  }

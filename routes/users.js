@@ -239,7 +239,7 @@ router.post('/reset/:token', function(req, res) {
     res.redirect('/');
   });
 });
-router.get('/machine-learning',ensureAuthenticated, function(req, res){
+  router.get('/machine-learning',ensureAuthenticated, function(req, res){
 	res.render('machine-learning');
 });
 router.get('/talk-session',ensureAuthenticated, function(req, res){
