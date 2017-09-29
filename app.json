@@ -2,5 +2,25 @@
   "name": "Prominence",
   "description": "The official website of prominence",
   "repository": "https://github.com/rohithrajasekharan/prominence",
-  "image": "heroku/nodejs"
+  "image": "heroku/nodejs",
+  "env": {
+    "SENDGRID_USERNAME": "rohithrajasekharan",
+    "SENDGRID_PASSWORD":"21twijvtbvbpos4wasw22d45i",
+    "TO":"prominencerit@gmail.com",
+    "ANSWER1":"pluto",
+    "ANSWER2":"oreo",
+    "ANSWER3":"galaxy note 7",
+    "ANSWER4":"despacito",
+    "ANSWER5":"killikurissimangalam",
+    "ANSWER6":"dooradarshan",
+    "ANSWER7":"satoshi nakamoto",
+    "ANSWER8":"lasso of truth",
+    "ANSWER9":"linpack",
+    "ANSWER10":"oren peli",
+    "ANSWER11":"md5",
+    "ANSWER12":"ricin",
+    "ANSWER13":"methamphetamine",
+    "ANSWER14":"david attenborough",
+    "ANSWER15":"corium"
+}
 }
