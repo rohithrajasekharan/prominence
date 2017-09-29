@@ -3,6 +3,12 @@
   .jumbotron{
   margin-bottom: 100px;
 }
+.author{
+  margin-left: 70%;
+  margin-top: 20px;
+  margin-bottom: -40px;
+  max-height: 2px;
+}
 }
 #event{
   margin-left: auto;
