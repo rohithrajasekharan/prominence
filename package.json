@@ -40,5 +40,8 @@
     "passport-local": "*",
     "sweetalert": "^2.0.3",
     "uninstall": "0.0.0"
+  },
+  "engines": {
+    "node": "8.4.0"
   }
 }
