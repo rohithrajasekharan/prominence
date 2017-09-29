@@ -1,0 +1,110 @@
+<div class="container bot">
+  <div class="text-center">
+    <h2>Wearables Workshop</h2></br>
+    <img src="/images/wearable.gif" id="paper-img" style="min-width:65%;max-height:500px;">
+  </div></br>
+  <div id="sv-text" style="margin-left:auto;margin-right:auto;max-width:800px;">
+Wearable technology is on the rise in both personal and business use. Dive deep into how things work in the world of wearables. Join us for the two day hands on workshop on Wearable technology conducted in corporation with IEEE RIT student branch. The workshop will cover topics like programming with ESP8266, interfacing sensor, concepts of access points, SSID, IP & MAC address, concepts of server and client, http request and responses etc.  </div></br>
+<div id="box" class="text-center">
+  <div>Schedule: 14th & 13th October 9am-4pm</div>
+  <div>Registration fee: Rs 450</div>
+  <div>Venue: Electronics department</div>
+</div></br><div class="row text-center">
+    <div class="col-md" id="box">
+      <div>Programme coordinator</br>Jishnu</br><i class="fa fa-phone" aria-hidden="true"></i>
+        <i class="fa fa-whatsapp" aria-hidden="true"></i><h7 style="font-family:Helvetica">  8089596659</h7></div>
+    </div>
+  </div></br>
+  <div class="text-center">
+    {{#if user}}
+    <form action="/users/events" method="post">
+ <button class="btn1" name="foo" value="wearables">Register</button>
+    </form>
+    {{else}}
+    <form action="/users/events" method="post">
+ <button name="foo" value="wearables">Register</button>
+    </form>
+    {{/if}}</div>
+</br><hr>
+  <h5 class="text-center">Requirements</h5>
+</br><ul>
+  <li><h6>Accomodation will not be provided.</h6></li>
+  <li><h6>Students are requested to bring a laptop with stable version of windows installed. If you don't have a laptop, feel free to contact workshop coordinator directly.</h6></li>
+  <li><h6>Lunch and refreshment shall be provided, so you don't have to carry food with you.</h6></li>
+</ul></br><hr>
+<h5 class="text-center">About Lecture</h5></br>
+<div id="sv-text" style="margin-left:auto;margin-right:auto;">
+ </div></div>
+
+<footer class="footer-distributed">
+
+  <div class="footer-left">
+
+    <h3>Prominence<span>'17</span></h3>
+
+    <p class="footer-company-name">Prominence &copy; 2017</p>
+  </div>
+
+  <div class="footer-center">
+
+    <div>
+      <i class="fa fa-map-marker"></i>
+      <p><span>Rajiv Gandhi Institute Of Technology</span> Pampady, Kottayam</p>
+    </div>
+
+    <div>
+      <i class="fa fa-phone"></i>
+      <p>+91 7025321381</p>
+    </div>
+
+    <div>
+      <i class="fa fa-envelope"></i>
+      <p><a href="#s">prominencerit@gmail.com</a></p>
+    </div>
+
+  </div>
+
+  <div class="footer-right">
+
+    <div class="footer-icons">
+
+      <a href="https://www.facebook.com/prominencerit"><i class="fa fa-facebook"></i></a>
+      <a href="https://www.twitter.com/prominencerit"><i class="fa fa-twitter"></i></a>
+      <a href="https://www.youtube.com/channel/UCb0tJNFh12ti03RhMeKlUEQ/"><i class="fa fa-youtube"></i></a>
+      <a href="https://www.github.com/rohithrajasekharan/prominence"><i class="fa fa-github"></i></a>
+
+    </div>
+
+  </div>
+
+</footer>
+<script>
+$('.btn1').on('click',function (e, params) {
+  var localParams = params || {};
+
+    if (!localParams.send) {
+        e.preventDefault();
+    }
+
+       //additional input validations can be done hear
+
+swal({
+            title: "Confirm entry",
+            text: "Confirm Registration as {{user.firstName}} {{user.lastName}}",
+            type: "success",
+            showCancelButton: true,
+            confirmButtonColor: "#6A9944",
+            confirmButtonText: "Confirm",
+            cancelButtonText: "Cancel",
+            closeOnConfirm: true
+        }, function (isConfirm) {
+            if (isConfirm) {
+                $(e.currentTarget).trigger(e.type, { 'send': true });
+            } else {
+
+          //additional run on cancel  functions can be done hear
+
+        }
+    });
+});
+</script>

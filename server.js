@@ -13,7 +13,7 @@ var localStrategy=require("passport-local").Strategy;
 var mongo=require("mongodb");
 var mongoose=require("mongoose");
 mongoose.Promise = global.Promise;
-mongoose.connect("mongodb://localhost/prominence", {
+mongoose.connect("mongodb://Admin:4242@ds155644.mlab.com:55644/prominencerit", {
   useMongoClient: true,
   /* other options */
 });

@@ -1,16 +1,55 @@
 <div class="row">
   <img class="col-md-9" src="/images/crime2.jpg" id="crime">
-    <div class="col-md-3 container" id="crime_text" style="margin-bottom:50px;"><h5 class="text-center" style="margin-top:30px;">The Last Road</h5></br>
-      <div><span id="sv-text">You see things, but do you really observe? Use your Imagination,
+    <div class="col-md-3 container" id="crime_text" style="margin-bottom:50px;"><h5 class="text-center" style="margin-top:30px;">The Last Road</h5>
+      <div style='margin-right:-20px;'><span id="sv-text"></br>You see things, but do you really observe? Use your Imagination,
          observation and deductions to save a life. A live thrilling Investigation game with a brilliant plot. Bring out the detective in you and win prizes. Make sure you bring a Watson with you.</span></div>
        </br><div id="box" class="text-center">
-         <div>Registration fee: Rs 20</div>
+         <div>Registration fee: Rs 20/team</div>
            <div>Schedule: 13th October 11am</div>
            <div>Venue: Electronics department</div>
-         </div></br><div class="text-center"><div class="btn btn-primary btn-padding"><h5>Register</h5></div></div></br>
+         </div></br><div class="text-center">
+           {{#if user}}
+           <form action="/users/events" method="post">
+           <button class="btn1" name="foo" value="crime_scene">Register</button>
+           </form>
+           {{else}}
+           <form action="/users/events" method="post">
+           <button name="foo" value="crime_scene">Register</button>
+           </form>
+           {{/if}}         </div></br>
          <div class="text-center" id="box">
            <div>Event coordinator</br>Prince Thomas</br><i class="fa fa-phone" aria-hidden="true"></i><i class="fa fa-whatsapp" aria-hidden="true">
            </i><h7 style="font-family:Helvetica">  8136944080</h7></div>
          </div>
        </div>
 </div>
+<script>
+$('.btn1').on('click',function (e, params) {
+  var localParams = params || {};
+
+    if (!localParams.send) {
+        e.preventDefault();
+    }
+
+       //additional input validations can be done hear
+
+swal({
+            title: "Confirm entry",
+            text: "Confirm Registration as {{user.firstName}} {{user.lastName}}",
+            type: "success",
+            showCancelButton: true,
+            confirmButtonColor: "#6A9944",
+            confirmButtonText: "Confirm",
+            cancelButtonText: "Cancel",
+            closeOnConfirm: true
+        }, function (isConfirm) {
+            if (isConfirm) {
+                $(e.currentTarget).trigger(e.type, { 'send': true });
+            } else {
+
+          //additional run on cancel  functions can be done hear
+
+        }
+    });
+});
+</script>

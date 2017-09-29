@@ -1,0 +1,50 @@
+
+  body{
+  background: url(/images/back.jpg);
+  background-repeat:no-repeat;
+  -webkit-background-size:cover;
+  -moz-background-size:cover;
+  -o-background-size:cover;
+  background-size:cover;
+  background-position:center;
+}
+.quo{
+     opacity: 80%;
+    max-width: 800px;
+    min-height: 350px;
+    height: auto;
+    border-radius: 5px;
+    margin: 2% auto;
+    box-shadow: 0 9px 50px hsla(20, 67%, 75%, 0.31);
+    padding: 2%;
+}
+.butt{
+  background:white;
+  width:150px;
+  height:40px;
+  color:#0265C9;
+
+}
+
+@media(min-width:766px){
+.butt:hover {
+    background:#0265C9;
+  color:white;
+  border-color:white;
+  border-width: .5px;
+ border-style: solid;
+  cursor:pointer;
+}
+.quo{
+  min-width: 700px;
+}
+}
+h3{
+  padding:60px;
+}
+h2 {
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+    font-size: 1.5em;
+  color:white;
+  }

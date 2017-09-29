@@ -14,14 +14,21 @@
     <div>Venue: Electronics department</div>
   </div></br>
   <div class="text-center">
-  <div class="btn btn-primary btn-padding"><h5>Register</h5></div>
-</div></br>
+    {{#if user}}
+    <form action="/users/events" method="post">
+    <button class="btn1" name="foo" value="paper_presentation">Register</button>
+    </form>
+    {{else}}
+    <form action="/users/events" method="post">
+    <button name="foo" value="paper_presentation">Register</button>
+    </form>
+    {{/if}}</div></br>
 <div class="row text-center">
   <div class="col-md" id="box">
-    <div>Programme coordinator</br>Joseph Thomas</br><i class="fa fa-phone" aria-hidden="true"></i><i class="fa fa-whatsapp" aria-hidden="true"></i><h7 style="font-family:Helvetica">  9048202778</h7></div>
+    <div>Event coordinator</br>Joseph Thomas</br><i class="fa fa-phone" aria-hidden="true"></i><i class="fa fa-whatsapp" aria-hidden="true"></i><h7 style="font-family:Helvetica">  9048202778</h7></div>
   </div>
   <div class="col-md" id="box">
-    <div>Team mentor</br>Annete James</br><i class="fa fa-phone" aria-hidden="true"></i><i class="fa fa-whatsapp" aria-hidden="true"></i><h7 style="font-family:Helvetica">  9947412939</h7></div>
+    <div>Event H</br>Annete James</br><i class="fa fa-phone" aria-hidden="true"></i><i class="fa fa-whatsapp" aria-hidden="true"></i><h7 style="font-family:Helvetica">  9947412939</h7></div>
   </div>
 </div></br>
 
@@ -30,6 +37,7 @@
   <h5 class="text-center">RULES</h5>
 </br><ol>
   <li><h6> A team of three or less is allowed to participate. Lone wolves are also allowed.</h6></li>
+  <li><h6> Only the team leader have to apply online. The rest of the team members may report at the venue.</h6></li>
   <li><h6> The participants should be present at the venue atleast 1 hour before the contest.</h6></li>
   <li><h6> An abstract should be submitted before hand at the arrival of the participants.</h6></li>
   <li><h6> Each of the teams will be provided with a time slot of 15 minutes.</h6></li>
@@ -69,13 +77,46 @@
 
     <div class="footer-icons">
 
-      <a href="#"><i class="fa fa-facebook"></i></a>
-      <a href="#"><i class="fa fa-twitter"></i></a>
-      <a href="#"><i class="fa fa-linkedin"></i></a>
-      <a href="#"><i class="fa fa-github"></i></a>
+      <a href="https://www.facebook.com/prominencerit"><i class="fa fa-facebook"></i></a>
+      <a href="https://www.twitter.com/prominencerit"><i class="fa fa-twitter"></i></a>
+      <a href="https://www.linkedin.com/prominencerit"><i class="fa fa-linkedin"></i></a>
+      <a href="https://www.github.com/rohithrajasekharan/prominence"><i class="fa fa-github"></i></a>
 
     </div>
 
   </div>
 
 </footer>
+<script>
+
+$('.btn1').on('click',function (e, params) {
+  var localParams = params || {};
+
+    if (!localParams.send) {
+        e.preventDefault();
+    }
+
+       //additional input validations can be done hear
+
+swal({
+            title: "Confirm entry",
+            text: "Confirm Registration as {{user.firstName}} {{user.lastName}}",
+            type: "success",
+            showCancelButton: true,
+            confirmButtonColor: "#6A9944",
+            confirmButtonText: "Confirm",
+            cancelButtonText: "Cancel",
+            closeOnConfirm: true
+        }, function (isConfirm) {
+            if (isConfirm) {
+                $(e.currentTarget).trigger(e.type, { 'send': true });
+            } else {
+
+          //additional run on cancel  functions can be done hear
+
+        }
+    });
+});
+
+
+</script>

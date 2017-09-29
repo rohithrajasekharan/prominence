@@ -1,6 +1,6 @@
-<div class="container box">
+<div class="container">
   <div class="row text-center">
-    <div class="card col-md-3" id="speaker">
+    <div class="card col-md" id="speaker">
     <img class="card2-img-top" src="/images/gautham.png" alt="image">
     <div class="card-block">
       <h4 class="card-title text-center">GAUTHAM</br>COO of SV.CO</h4><hr>
@@ -18,8 +18,15 @@
       <div>Schedule: 13th October 10am-4pm</div>
       <div>Venue: Sopanam hall</div>
     </div></br>
-<div class="btn btn-primary btn-padding"><h5>Register</h5></div>
-<div class="btn btn-primary btn-padding" onclick="window.open('https://www.sv.co')"><h5>Visit SV.CO</h5></div></br></br>
+    {{#if user}}
+    <form action="/users/events" method="post">
+   <button class="btn1" name="foo" value="session">Register</button>
+    </form>
+    {{else}}
+    <form action="/users/events" method="post">
+   <button name="foo" value="session">Register</button>
+    </form>
+    {{/if}}<button onclick="window.open('https://www.sv.co')">Visit SV.CO</button></br></br>
 <div class="row">
   <div class="col-md" id="box">
     <div>Programme coordinator</br>Yadhukrishnan R</br><i class="fa fa-phone" aria-hidden="true"></i><i class="fa fa-whatsapp" aria-hidden="true"></i><h7 style="font-family:Helvetica">  9544822022</h7></div>
@@ -73,13 +80,43 @@ With a passion for technology, teaching and travel, his key areas of interest in
 
     <div class="footer-icons">
 
-      <a href="#"><i class="fa fa-facebook"></i></a>
-      <a href="#"><i class="fa fa-twitter"></i></a>
-      <a href="#"><i class="fa fa-linkedin"></i></a>
-      <a href="#"><i class="fa fa-github"></i></a>
+      <a href="https://www.facebook.com/prominencerit"><i class="fa fa-facebook"></i></a>
+      <a href="https://www.twitter.com/prominencerit"><i class="fa fa-twitter"></i></a>
+      <a href="https://www.youtube.com/channel/UCb0tJNFh12ti03RhMeKlUEQ/"><i class="fa fa-youtube"></i></a>
+      <a href="https://www.github.com/rohithrajasekharan/prominence"><i class="fa fa-github"></i></a>
 
     </div>
 
   </div>
 
 </footer>
+<script>
+$('.btn1').on('click',function (e, params) {
+  var localParams = params || {};
+
+    if (!localParams.send) {
+        e.preventDefault();
+    }
+
+       //additional input validations can be done hear
+
+swal({
+            title: "Confirm entry",
+            text: "Confirm Registration as {{user.firstName}} {{user.lastName}}",
+            type: "success",
+            showCancelButton: true,
+            confirmButtonColor: "#6A9944",
+            confirmButtonText: "Confirm",
+            cancelButtonText: "Cancel",
+            closeOnConfirm: true
+        }, function (isConfirm) {
+            if (isConfirm) {
+                $(e.currentTarget).trigger(e.type, { 'send': true });
+            } else {
+
+          //additional run on cancel  functions can be done hear
+
+        }
+    });
+});
+</script>

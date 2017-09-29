@@ -13,7 +13,21 @@ var bcrypt = require('bcryptjs');
 var sendgrid_username   = process.env.SENDGRID_USERNAME;
 var sendgrid_password   = process.env.SENDGRID_PASSWORD;
 var to                  = process.env.TO;
-
+var answer1             = process.env.ANSWER1;
+var answer2             = process.env.ANSWER2;
+var answer3             = process.env.ANSWER3;
+var answer4             = process.env.ANSWER4;
+var answer5             = process.env.ANSWER5;
+var answer6             = process.env.ANSWER6;
+var answer7             = process.env.ANSWER7;
+var answer8             = process.env.ANSWER8;
+var answer9             = process.env.ANSWER9;
+var answer10             = process.env.ANSWER10;
+var answer11             = process.env.ANSWER11;
+var answer12             = process.env.ANSWER12;
+var answer13             = process.env.ANSWER13;
+var answer14             = process.env.ANSWER14;
+var answer15             = process.env.ANSWER15;
 function ensureAuthenticated(req, res, next) {
   if (req.isAuthenticated()) {
     req.flash('error_msg','You are logged in');
@@ -24,7 +38,16 @@ function ensureAuthenticated(req, res, next) {
 return next();
   }
 }
-
+function ensureAuth(req, res, next) {
+  if (req.isAuthenticated()) {
+    return next();
+  }
+  else
+  {
+  req.flash('error_msg','You must login to continue');
+  res.redirect('/users/login')
+  }
+}
 // Register
 router.get('/register',ensureAuthenticated, function(req, res){
 	res.render('register');
@@ -43,10 +66,15 @@ router.post('/register', function(req, res){
 	var lastName = req.body.lastName;
 	var password = req.body.password;
 	var password2 = req.body.password2;
-
+  var semester = req.body.semester;
+  var college = req.body.college;
+  var department = req.body.department;
+  var phn = req.body.phn;
 	// Validation
 
 	req.checkBody('lastName', 'First Name is required').notEmpty();
+  req.checkBody('college', 'College name is required').notEmpty();
+  req.checkBody('phn', 'Phone number is required').notEmpty();
 	req.checkBody('email', 'Email is not valid').isEmail();
 	req.checkBody('lastName', 'Last Name is required').notEmpty();
   req.checkBody('password', 'Password should be minimum 6 characters long').isLength({ min: 5 })
@@ -64,7 +92,11 @@ router.post('/register', function(req, res){
 			firstName: firstName,
 			email:email,
 			lastName: lastName,
-			password: password
+			password: password,
+      phn: phn,
+      college: college,
+      department: department,
+      semester: semester
 		});
 
     User.createUser(newUser, function(err, user){
@@ -109,7 +141,6 @@ passport.deserializeUser(function(id, done) {
 router.post('/login',
   passport.authenticate('local', {successRedirect:'/', failureRedirect:'/users/login',failureFlash:true}),
   function(req, res) {
-
     });
       router.get('/logout', function(req, res){
     	req.logout();
@@ -159,11 +190,10 @@ router.post('/forgot', function(req, res, next) {
       var mailOptions = {
         to: user.email,
         from: to,
-        subject: 'Node.js Password Reset',
-        text: 'You are receiving this because you (or someone else) have requested the reset of the password for your account.\n\n' +
-          'Please click on the following link, or paste this into your browser to complete the process:\n\n' +
+        subject: 'Prominence Password Reset',
+        text: 'Hello\n\n'+'You are receiving this because you have requested the reset of the password for your account.Please click on the following link, or paste this into your browser to complete the process:\n\n' +
           'http://' + req.headers.host + '/users/reset/' + token + '\n\n' +
-          'If you did not request this, please ignore this email and your password will remain unchanged.\n'
+          'If you did not request this, please ignore this email.\n\n'+'Regards,\n\nProminence 2017'
       };
       smtpTransport.sendMail(mailOptions, function(err) {
         req.flash('success_msg', 'An e-mail has been sent to ' + user.email + ' with further instructions.');
@@ -239,32 +269,170 @@ router.post('/reset/:token', function(req, res) {
     res.redirect('/');
   });
 });
-  router.get('/machine-learning',ensureAuthenticated, function(req, res){
+  router.get('/machine-learning', function(req, res){
 	res.render('machine-learning');
 });
-router.get('/talk-session',ensureAuthenticated, function(req, res){
+router.get('/talk-session', function(req, res){
 	res.render('sv');
 });
-router.get('/wearables',ensureAuthenticated, function(req, res){
+router.get('/wearables', function(req, res){
 	res.render('wearables');
 });
-router.get('/mems',ensureAuthenticated, function(req, res){
-	res.render('mems');
+router.get('/business_analytics', function(req, res){
+	res.render('business_analytics');
 });
-router.get('/lan-gaming',ensureAuthenticated, function(req, res){
+router.get('/lan-gaming', function(req, res){
 	res.render('lan-gaming');
 });
-router.get('/line-follower',ensureAuthenticated, function(req, res){
+router.get('/line-follower', function(req, res){
 	res.render('line-follower');
 });
-router.get('/quiz',ensureAuthenticated, function(req, res){
+router.get('/quiz', function(req, res){
 	res.render('quiz');
 });
-router.get('/paper-presentation',ensureAuthenticated, function(req, res){
+router.get('/paper-presentation', function(req, res){
 	res.render('paper-presentation');
 });
-router.get('/crime-scene',ensureAuthenticated, function(req, res){
+router.get('/crime-scene', function(req, res){
 	res.render('crime-scene');
 });
+router.get('/decrypt',ensureAuth, function(req, res){
+	res.render('decrypt');
+});
+
+router.post('/events',ensureAuth, function(req, res){
+  req.user.update(
+  { $push : { events: req.body.foo}},
+  function(err){
+         if(err){
+             res.send(err);
+         }else{
+           req.flash('success_msg','Congrats! Your seat has been reserved!');
+           res.redirect('/users/events');
+         }
+});
+    });
+    router.post('/decrypt', function(req, res){
+      if(req.body.answer1){
+        if(req.body.answer1==answer1){
+          res.render('success.handlebars', {root: './views'})
+      }
+      else{
+            res.render('error.handlebars', {root: './views'})
+        }
+      }
+      if(req.body.answer2){
+        if(req.body.answer2==answer2){
+            res.render('success.handlebars', {root: './views'})
+        }
+        else{
+              res.render('error.handlebars', {root: './views'})
+          }
+      }
+    if(req.body.answer3){
+     if(req.body.answer3==answer3){
+          res.render('success.handlebars', {root: './views'})
+      }
+      else{
+            res.render('error.handlebars', {root: './views'})
+        }
+    }
+    if(req.body.answer4){
+    if(req.body.answer4==answer4){
+          res.render('success.handlebars', {root: './views'})
+      }
+      else{
+            res.render('error.handlebars', {root: './views'})
+        }
+    }
+    if(req.body.answer5){
+      if(req.body.answer5==answer5){
+        res.render('success.handlebars', {root: './views'})
+    }
+    else{
+          res.render('error.handlebars', {root: './views'})
+      }
+    }
+    if(req.body.answer6){
+      if(req.body.answer6==answer6){
+          res.render('success.handlebars', {root: './views'})
+      }
+      else{
+            res.render('error.handlebars', {root: './views'})
+        }
+    }
+  if(req.body.answer7){
+   if(req.body.answer7==answer7){
+        res.render('success.handlebars', {root: './views'})
+    }
+    else{
+          res.render('error.handlebars', {root: './views'})
+      }
+  }
+  if(req.body.answer8){
+  if(req.body.answer8==answer8){
+        res.render('success.handlebars', {root: './views'})
+    }
+    else{
+          res.render('error.handlebars', {root: './views'})
+      }
+  }
+  if(req.body.answer9){
+  if(req.body.answer9==answer9){
+        res.render('success.handlebars', {root: './views'})
+    }
+    else{
+          res.render('error.handlebars', {root: './views'})
+      }
+  }
+  if(req.body.answer10){
+    if(req.body.answer10==answer10){
+      res.render('success.handlebars', {root: './views'})
+  }
+  else{
+        res.render('error.handlebars', {root: './views'})
+    }
+  }
+  if(req.body.answer11){
+    if(req.body.answer11==answer11){
+        res.render('success.handlebars', {root: './views'})
+    }
+    else{
+          res.render('error.handlebars', {root: './views'})
+      }
+  }
+if(req.body.answer12){
+ if(req.body.answer12==answer12){
+      res.render('success.handlebars', {root: './views'})
+  }
+  else{
+        res.render('error.handlebars', {root: './views'})
+    }
+}
+if(req.body.answer13){
+if(req.body.answer13==answer13){
+      res.render('success.handlebars', {root: './views'})
+  }
+  else{
+        res.render('error.handlebars', {root: './views'})
+    }
+}
+if(req.body.answer14){
+if(req.body.answer14==answer14){
+      res.render('success.handlebars', {root: './views'})
+  }
+  else{
+        res.render('error.handlebars', {root: './views'})
+    }
+}
+if(req.body.answer15){
+if(req.body.answer15==answer15){
+      res.render('success.handlebars', {root: './views'})
+  }
+  else{
+        res.render('error.handlebars', {root: './views'})
+    }
+}
+    });
 
 module.exports=router;

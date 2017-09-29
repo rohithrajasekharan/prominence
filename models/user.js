@@ -17,6 +17,18 @@ var UserSchema = mongoose.Schema({
 	firstName: {
 		type: String
 	},
+	semester: {
+		type: String
+	},
+	phn: {
+		type: String
+	},
+	department: {
+		type: String
+	},
+	college: {
+		type: String
+	},
 	events:[],
 	resetPasswordToken: {
 		type :String
