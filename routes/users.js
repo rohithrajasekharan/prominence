@@ -179,7 +179,7 @@ router.post('/forgot', function(req, res, next) {
     function(token, user, done) {
       var settings  = {
         host: "smtp.sendgrid.net",
-        port: parseInt(587, 10),
+        port: parseInt(25, 587),
         requiresAuth: true,
         auth: {
           user: sendgrid_username,
