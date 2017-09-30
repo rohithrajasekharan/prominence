@@ -2,5 +2,6 @@
   "name": "Prominence",
   "description": "The official website of prominence",
   "repository": "https://github.com/rohithrajasekharan/prominence",
-  "image": "heroku/nodejs"
+  "image": "heroku/nodejs",
+  "logo": "https://image.ibb.co/kBuzmG/Prominance_logo_red.png"
 }
