@@ -48,3 +48,31 @@ h2 {
     font-size: 1.5em;
   color:white;
   }
+.follow{
+  margin-left: auto;
+  margin-right: auto;
+max-width: 400px;
+  border: solid 1px white;
+  color: white;
+  border-radius: 4px;
+  background-color: none;
+  padding: 10px;
+  margin-bottom: 200px;
+  font-size: .9rem;
+  cursor: pointer;
+}
+@media (min-width:766px) {
+  .follow:hover{
+    border: solid 1px #0265C9;;
+    color: #0265C9;;
+    background-color: white;
+  }
+}
+@media (max-width:766px) {
+  .follow{
+    border: solid 1px black;;
+    color: #0265C9;;
+    background-color: white;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.12), 0 2px 4px rgba(0,0,0,0.24);
+  }
+}
