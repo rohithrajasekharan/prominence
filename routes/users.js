@@ -28,6 +28,30 @@ var answer12             = process.env.ANSWER12;
 var answer13             = process.env.ANSWER13;
 var answer14             = process.env.ANSWER14;
 var answer15             = process.env.ANSWER15;
+function getDateTime() {
+
+    var date = new Date();
+
+    var hour = date.getHours();
+    hour = (hour < 10 ? "0" : "") + hour;
+
+    var min  = date.getMinutes();
+    min = (min < 10 ? "0" : "") + min;
+
+    var sec  = date.getSeconds();
+    sec = (sec < 10 ? "0" : "") + sec;
+
+    var year = date.getFullYear();
+
+    var month = date.getMonth() + 1;
+    month = (month < 10 ? "0" : "") + month;
+
+    var day  = date.getDate();
+    day = (day < 10 ? "0" : "") + day;
+
+    return year + ":" + month + ":" + day + ":" + hour + ":" + min + ":" + sec;
+
+}
 function ensureAuthenticated(req, res, next) {
   if (req.isAuthenticated()) {
     req.flash('error_msg','You are logged in');
@@ -297,9 +321,55 @@ router.get('/crime-scene', function(req, res){
 	res.render('crime-scene');
 });
 router.get('/decrypt',ensureAuth, function(req, res){
-	res.render('decrypt');
+  if(req.user.events.indexOf('15')>-1){
+    return res.render('Answer16');
+  }
+  else if(req.user.events.indexOf('14')>-1){
+    return res.render('Answer15');
+  }
+  else if(req.user.events.indexOf('13')>-1){
+    return res.render('Answer14');
+  }
+  else if(req.user.events.indexOf('12')>-1){
+    return res.render('Answer13');
+  }
+  else if(req.user.events.indexOf('11')>-1){
+    return res.render('Answer12');
+  }
+  else if(req.user.events.indexOf('10')>-1){
+    return res.render('Answer11');
+  }
+  else if(req.user.events.indexOf('9')>-1){
+    return res.render('Answer10');
+  }
+  else if(req.user.events.indexOf('8')>-1){
+    return res.render('Answer9');
+  }
+  else if(req.user.events.indexOf('7')>-1){
+    return res.render('Answer8');
+  }
+  else if(req.user.events.indexOf('6')>-1){
+    return res.render('Answer7');
+  }
+  else if(req.user.events.indexOf('5')>-1){
+    return res.render('Answer6');
+  }
+  else if(req.user.events.indexOf('4')>-1){
+    return res.render('Answer5');
+  }
+  else if(req.user.events.indexOf('3')>-1){
+    return res.render('Answer4');
+  }
+  else if(req.user.events.indexOf('2')>-1){
+    return res.render('Answer3');
+  }
+  else if(req.user.events.indexOf('1')>-1){
+    return res.render('Answer2');
+  }
+  else{
+    return res.render('decrypt');
+  }
 });
-
 router.post('/events',ensureAuth, function(req, res){
   req.user.update(
   { $push : { events: req.body.foo}},
@@ -313,9 +383,18 @@ router.post('/events',ensureAuth, function(req, res){
 });
     });
     router.post('/decrypt', function(req, res){
+      var eureka=getDateTime();
       if(req.body.answer1){
         if(req.body.answer1==answer1){
-          res.render('success.handlebars', {root: './views'})
+          req.user.update(
+          { $pushAll : { events: ["cleared level 1 at "+eureka,"1"]}},
+          function(err){
+                 if(err){
+                     res.send(err);
+                 }else{
+                  res.render('Answer2', {root: './views'});
+                 }
+        });
       }
       else{
             res.render('error.handlebars', {root: './views'})
@@ -323,114 +402,212 @@ router.post('/events',ensureAuth, function(req, res){
       }
       if(req.body.answer2){
         if(req.body.answer2==answer2){
-            res.render('success.handlebars', {root: './views'})
-        }
+          req.user.update(
+          { $pushAll : { events: ["cleared level 2 at "+eureka,"2"]}},
+          function(err){
+                 if(err){
+                     res.send(err);
+                 }else{
+                  res.render('Answer3', {root: './views'});
+                 }
+          });        }
         else{
-              res.render('error.handlebars', {root: './views'})
+              res.render('error2.handlebars', {root: './views'})
           }
       }
     if(req.body.answer3){
      if(req.body.answer3==answer3){
-          res.render('success.handlebars', {root: './views'})
-      }
+       req.user.update(
+       { $pushAll : { events: ["cleared level 3 at "+eureka,"3"]}},
+       function(err){
+              if(err){
+                  res.send(err);
+              }else{
+               res.render('Answer4', {root: './views'});
+              }
+       });      }
       else{
-            res.render('error.handlebars', {root: './views'})
+            res.render('error3.handlebars', {root: './views'})
         }
     }
     if(req.body.answer4){
     if(req.body.answer4==answer4){
-          res.render('success.handlebars', {root: './views'})
-      }
+      req.user.update(
+      { $pushAll : { events: ["cleared level 4 at "+eureka,"4"]}},
+      function(err){
+             if(err){
+                 res.send(err);
+             }else{
+              res.render('Answer5', {root: './views'});
+             }
+      });      }
       else{
-            res.render('error.handlebars', {root: './views'})
+            res.render('error4.handlebars', {root: './views'})
         }
     }
     if(req.body.answer5){
       if(req.body.answer5==answer5){
-        res.render('success.handlebars', {root: './views'})
-    }
+        req.user.update(
+        { $pushAll : { events: ["cleared level 5 at "+eureka,"5"]}},
+        function(err){
+               if(err){
+                   res.send(err);
+               }else{
+                res.render('Answer6', {root: './views'});
+               }
+        });    }
     else{
-          res.render('error.handlebars', {root: './views'})
+          res.render('error5.handlebars', {root: './views'})
       }
     }
     if(req.body.answer6){
       if(req.body.answer6==answer6){
-          res.render('success.handlebars', {root: './views'})
-      }
+        req.user.update(
+        { $pushAll : { events: ["cleared level 6 at "+eureka,"6"]}},
+        function(err){
+               if(err){
+                   res.send(err);
+               }else{
+                res.render('Answer7', {root: './views'});
+               }
+        });      }
       else{
-            res.render('error.handlebars', {root: './views'})
+            res.render('error6.handlebars', {root: './views'})
         }
     }
   if(req.body.answer7){
    if(req.body.answer7==answer7){
-        res.render('success.handlebars', {root: './views'})
-    }
+     req.user.update(
+     { $pushAll : { events: ["cleared level 7 at "+eureka,"7"]}},
+     function(err){
+            if(err){
+                res.send(err);
+            }else{
+             res.render('Answer8', {root: './views'});
+            }
+     });    }
     else{
-          res.render('error.handlebars', {root: './views'})
+          res.render('error7.handlebars', {root: './views'})
       }
   }
   if(req.body.answer8){
   if(req.body.answer8==answer8){
-        res.render('success.handlebars', {root: './views'})
-    }
+    req.user.update(
+    { $pushAll : { events: ["cleared level 8 at "+eureka,"8"]}},
+    function(err){
+           if(err){
+               res.send(err);
+           }else{
+            res.render('Answer9', {root: './views'});
+           }
+    });    }
     else{
-          res.render('error.handlebars', {root: './views'})
+          res.render('error8.handlebars', {root: './views'})
       }
   }
   if(req.body.answer9){
   if(req.body.answer9==answer9){
-        res.render('success.handlebars', {root: './views'})
-    }
+    req.user.update(
+    { $pushAll : { events: ["cleared level 9 at "+eureka,"9"]}},
+    function(err){
+           if(err){
+               res.send(err);
+           }else{
+            res.render('Answer10', {root: './views'});
+           }
+    });    }
     else{
-          res.render('error.handlebars', {root: './views'})
+          res.render('error9.handlebars', {root: './views'})
       }
   }
   if(req.body.answer10){
     if(req.body.answer10==answer10){
-      res.render('success.handlebars', {root: './views'})
-  }
+      req.user.update(
+      { $pushAll : { events: ["cleared level 10 at "+eureka,"10"]}},
+      function(err){
+             if(err){
+                 res.send(err);
+             }else{
+              res.render('Answer11', {root: './views'});
+             }
+      });  }
   else{
-        res.render('error.handlebars', {root: './views'})
+        res.render('error10.handlebars', {root: './views'})
     }
   }
   if(req.body.answer11){
     if(req.body.answer11==answer11){
-        res.render('success.handlebars', {root: './views'})
-    }
+      req.user.update(
+      { $pushAll : { events: ["cleared level 11 at "+eureka,"11"]}},
+      function(err){
+             if(err){
+                 res.send(err);
+             }else{
+              res.render('Answer12', {root: './views'});
+             }
+      });    }
     else{
-          res.render('error.handlebars', {root: './views'})
+          res.render('error11.handlebars', {root: './views'})
       }
   }
 if(req.body.answer12){
  if(req.body.answer12==answer12){
-      res.render('success.handlebars', {root: './views'})
-  }
+   req.user.update(
+   { $pushAll : { events: ["cleared level 12 at "+eureka,"12"]}},
+   function(err){
+          if(err){
+              res.send(err);
+          }else{
+           res.render('Answer13', {root: './views'});
+          }
+   });  }
   else{
-        res.render('error.handlebars', {root: './views'})
+        res.render('error12.handlebars', {root: './views'})
     }
 }
 if(req.body.answer13){
 if(req.body.answer13==answer13){
-      res.render('success.handlebars', {root: './views'})
-  }
+  req.user.update(
+  { $pushAll : { events: ["cleared level 13 at "+eureka,"13"]}},
+  function(err){
+         if(err){
+             res.send(err);
+         }else{
+          res.render('Answer14', {root: './views'});
+         }
+  });  }
   else{
-        res.render('error.handlebars', {root: './views'})
+        res.render('error13.handlebars', {root: './views'})
     }
 }
 if(req.body.answer14){
 if(req.body.answer14==answer14){
-      res.render('success.handlebars', {root: './views'})
-  }
+  req.user.update(
+  { $pushAll : { events: ["cleared level 14 at "+eureka,"14"]}},
+  function(err){
+         if(err){
+             res.send(err);
+         }else{
+          res.render('Answer15', {root: './views'});
+         }
+  });  }
   else{
-        res.render('error.handlebars', {root: './views'})
+        res.render('error14.handlebars', {root: './views'})
     }
 }
 if(req.body.answer15){
 if(req.body.answer15==answer15){
-      res.render('success.handlebars', {root: './views'})
-  }
+  req.user.update(
+  { $pushAll : { events: ["cleared level 15 at "+eureka,"15"]}},
+  function(err){
+         if(err){
+             res.send(err);
+         }else{
+          res.render('Answer16', {root: './views'});
+         }
+  });  }
   else{
-        res.render('error.handlebars', {root: './views'})
+        res.render('error15.handlebars', {root: './views'})
     }
 }
     });

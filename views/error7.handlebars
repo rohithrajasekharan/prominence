@@ -7,11 +7,10 @@
       <div class="text-center">
         <form class="form-group" action="/users/decrypt" method="post">
         <div class="form-group">
-          <label class="text-center" style="color:white">Answer</label>
-          <input type="text" class="form-control" name="answer1" autofocus="autofocus" style="margin-left:auto;margin-right:auto;">
+          <label class="text-center" style="color:white;">Question 7</label>
+          <input type="text" class="form-control" name="answer7" autofocus="autofocus" style="margin-left:auto;margin-right:auto;">
         </div>
         <button type="submit" class="butt btn btn-default">Submit</button>
-      </div>
     </form></div></div>
   <div class="col-md" style="color:white;display:none;"></br><h5 class="text-center">RULES</h5>
 </br><ul>
@@ -20,7 +19,6 @@
   <li><h6> All the team members must be students.</h6></li>
 </ul></div>
 </div></div><div class="container"><div class="follow text-center" onclick="window.open('//facebook.com/prominencerit')">Follow us on Facebook see scoreboard and updates</div></div>
-
 <script>
 $(window).on('load',function (e, params) {
   var localParams = params || {};
@@ -28,6 +26,6 @@ $(window).on('load',function (e, params) {
     if (!localParams.send) {
         e.preventDefault();
     }
-swal("Oops!", "Your answer is wrong! Try again!", "error")
+    swal("Oops!", "Your answer is wrong! Try again!", "error")
 });
 </script>
