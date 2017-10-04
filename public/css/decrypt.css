@@ -70,8 +70,8 @@ max-width: 400px;
 }
 @media (max-width:766px) {
   .follow{
-    border: solid 1px black;;
-    color: #0265C9;;
+    border: solid 1px black;
+    color: #0265C9;
     background-color: white;
     box-shadow: 0 2px 6px rgba(0,0,0,0.12), 0 2px 4px rgba(0,0,0,0.24);
   }
