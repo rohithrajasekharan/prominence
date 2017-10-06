@@ -3,8 +3,8 @@
     <div class="row">
   <div class=" col-md container"><div class="quo">
 </br><h2 class="text-center">Treasure Hunt</h2>
-<div class="text-center" style="color:white;"><h3>Coming Soon !</h3></div>
-      <div class="text-center">
+<div class="text-center" style="color:white;"><h3>Good one, {{{user.firstName}}}! Wait for the next challenge to arrive.</h3></div>
+      <div class="text-center" style="display:none">
         <form class="form-group" action="/users/decrypt" method="post">
         <div class="form-group">
           <label class="text-center" style="color:white;">Question 7</label>
@@ -26,6 +26,6 @@ $(window).on('load',function (e, params) {
     if (!localParams.send) {
         e.preventDefault();
     }
-swal("Way to go!", "You have cleared Level 6! Now bring down Level 7", "success")
+swal("Bodacious!", "You have cleared Level 6! Now bring down Level 7", "success")
 });
 </script>
