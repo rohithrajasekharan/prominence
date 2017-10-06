@@ -302,7 +302,7 @@ router.get('/talk-session', function(req, res){
 router.get('/wearables', function(req, res){
 	res.render('wearables');
 });
-router.get('/business_analytics', function(req, res){
+router.get('/ethical_hacking', function(req, res){
 	res.render('business_analytics');
 });
 router.get('/lan-gaming', function(req, res){
