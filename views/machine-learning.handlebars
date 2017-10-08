@@ -17,9 +17,7 @@
        <div>Venue: Electronics department</div>
      </div></br>
      <div class="text-center">
-       <div id="box">
-         <div>Registration closed</div>
-       </div><!-- {{#if user}}
+      {{#if user}}
        <form action="/users/events" method="post">
       <button class="btn1" name="foo" value="machine_learning">Register</button>
        </form>
@@ -27,7 +25,7 @@
        <form action="/users/events" method="post">
       <button name="foo" value="machine_learning">Register</button>
        </form>
-       {{/if}}--></div></br>
+       {{/if}}</div></br>
 
    <div class="row text-center">
      <div class="col-md" id="box">
