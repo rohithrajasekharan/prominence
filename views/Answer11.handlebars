@@ -3,14 +3,15 @@
     <div class="row">
   <div class=" col-md container"><div class="quo">
 </br><h2 class="text-center">Treasure Hunt</h2>
-<div class="text-center" style="color:white;"><h3>Great! {{user.firstName}}, You are stepping into real challenges. Wait till the next question arrives.</h3></div>
-      <div class="text-center" style="display:none;">
+<div class="text-center" style="color:white;"><img src="/images/qn11.jpeg" alt="" style="max-width:70%;"></div>
+      <div class="text-center">
         <form class="form-group" action="/users/decrypt" method="post">
         <div class="form-group">
-          <label class="text-center" style="color:white;">Answer11</label>
+          <label class="text-center" style="color:white">Answer</label>
           <input type="text" class="form-control" name="answer11" autofocus="autofocus" style="margin-left:auto;margin-right:auto;">
         </div>
         <button type="submit" class="butt btn btn-default">Submit</button>
+      </div>
     </form></div></div>
     <div class="container"><div class="follow text-center" onclick="window.open('//facebook.com/prominencerit')">Follow us on Facebook see scoreboard and updates</div></div>
   <div class="col-md" style="color:white;margin-top:-150px;"></br><h5 class="text-center">RULES</h5>
@@ -20,13 +21,14 @@
   <li><h6> Users scoring with fake names shall not appear in the scoreboard.</h6></li>
   <li><h6> No more Rules. Game on!</h6></li>
 </ul></div>
-</div></div><script>
+</div></div>
+<script>
 $(window).on('load',function (e, params) {
   var localParams = params || {};
 
     if (!localParams.send) {
         e.preventDefault();
     }
-swal("Target acquired!", "You have cleared Level 10! Now bring down Level 11", "success")
+swal("Target acquired!", "You have cleared level 10! Now bring down Level 11", "success")
 });
 </script>
