@@ -85,9 +85,15 @@
        Showcase your idea to a huge audience and a panel of experts, no matter what the
        topic is. </br><a href="/users/paper-presentation">Learn more</a>
      </p>
-     <div id="box">
-       <div>Registration closed</div>
-     </div>
+     {{#if user}}
+     <form action="/users/events" method="post">
+    <button class="btn1" name="foo" value="paper_presentation">Register</button>
+     </form>
+     {{else}}
+     <form action="/users/events" method="post">
+  <button name="foo" value="paper_presentation">Register</button>
+     </form>
+     {{/if}}
     </div>
     </div>
     <div class="card col-md">
